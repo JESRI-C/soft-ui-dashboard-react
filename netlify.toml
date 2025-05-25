@@ -1,5 +1,6 @@
 [build]
-  command = "npm run build"
+  # Install dependencies with legacy peer dep handling then build
+  command = "npm run install:peer-deps && npm run build"
   publish = "build"
 
 [build.environment]
