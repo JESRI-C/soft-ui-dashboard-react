@@ -26,7 +26,7 @@ const SoftButton = forwardRef(
     <SoftButtonRoot
       {...rest}
       ref={ref}
-      color="primary"
+      color={color}
       variant={variant === "gradient" ? "contained" : variant}
       size={size}
       ownerState={{ color, variant, size, circular, iconOnly }}
