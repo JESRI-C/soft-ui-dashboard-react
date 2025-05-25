@@ -38,6 +38,7 @@ import themeRTL from "assets/theme/theme-rtl";
 import rtlPlugin from "stylis-plugin-rtl";
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
+import { useAuth } from "hooks/useAuth";
 
 // Soft UI Dashboard React routes
 import routes from "routes";
@@ -54,6 +55,7 @@ export default function App() {
   const [onMouseEnter, setOnMouseEnter] = useState(false);
   const [rtlCache, setRtlCache] = useState(null);
   const { pathname } = useLocation();
+  const { isAuthenticated } = useAuth();
 
   // Cache for the rtl
   useMemo(() => {
@@ -102,7 +104,12 @@ export default function App() {
       }
 
       if (route.route) {
-        return <Route exact path={route.route} element={route.component} key={route.key} />;
+        const element = route.protected
+          ? isAuthenticated
+            ? route.component
+            : <Navigate to="/auth/login" />
+          : route.component;
+        return <Route exact path={route.route} element={element} key={route.key} />;
       }
 
       return null;
@@ -136,12 +143,12 @@ export default function App() {
     <CacheProvider value={rtlCache}>
       <ThemeProvider theme={themeRTL}>
         <CssBaseline />
-        {layout === "dashboard" && (
-          <>
-            <Sidenav
-              color={sidenavColor}
-              brand={brand}
-              brandName="Soft UI Dashboard"
+          {layout === "dashboard" && isAuthenticated && (
+            <>
+              <Sidenav
+                color={sidenavColor}
+                brand={brand}
+                brandName="Soft UI Dashboard"
               routes={routes}
               onMouseEnter={handleOnMouseEnter}
               onMouseLeave={handleOnMouseLeave}
@@ -150,22 +157,22 @@ export default function App() {
             {configsButton}
           </>
         )}
-        {layout === "vr" && <Configurator />}
-        <Routes>
-          {getRoutes(routes)}
-          <Route path="*" element={<Navigate to="/dashboard" />} />
-        </Routes>
+          {layout === "vr" && isAuthenticated && <Configurator />}
+          <Routes>
+            {getRoutes(routes)}
+            <Route path="*" element={<Navigate to={isAuthenticated ? "/dashboard" : "/auth/login"} />} />
+          </Routes>
       </ThemeProvider>
     </CacheProvider>
   ) : (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      {layout === "dashboard" && (
-        <>
-          <Sidenav
-            color={sidenavColor}
-            brand={brand}
-            brandName="Soft UI Dashboard"
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        {layout === "dashboard" && isAuthenticated && (
+          <>
+            <Sidenav
+              color={sidenavColor}
+              brand={brand}
+              brandName="Soft UI Dashboard"
             routes={routes}
             onMouseEnter={handleOnMouseEnter}
             onMouseLeave={handleOnMouseLeave}
@@ -174,11 +181,11 @@ export default function App() {
           {configsButton}
         </>
       )}
-      {layout === "vr" && <Configurator />}
-      <Routes>
-        {getRoutes(routes)}
-        <Route path="*" element={<Navigate to="/dashboard" />} />
-      </Routes>
-    </ThemeProvider>
+        {layout === "vr" && isAuthenticated && <Configurator />}
+        <Routes>
+          {getRoutes(routes)}
+          <Route path="*" element={<Navigate to={isAuthenticated ? "/dashboard" : "/auth/login"} />} />
+        </Routes>
+      </ThemeProvider>
   );
 }

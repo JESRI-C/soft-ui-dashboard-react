@@ -36,6 +36,7 @@ import SoftInput from "components/SoftInput";
 // Soft UI Dashboard React examples
 import Breadcrumbs from "examples/Breadcrumbs";
 import NotificationItem from "examples/Items/NotificationItem";
+import { useAuth } from "hooks/useAuth";
 
 // Custom styles for DashboardNavbar
 import {
@@ -64,6 +65,7 @@ function DashboardNavbar({ absolute, light, isMini }) {
   const { miniSidenav, transparentNavbar, fixedNavbar, openConfigurator } = controller;
   const [openMenu, setOpenMenu] = useState(false);
   const route = useLocation().pathname.split("/").slice(1);
+  const { isAuthenticated, logout } = useAuth();
 
   useEffect(() => {
     // Setting the navbar type
@@ -154,24 +156,43 @@ function DashboardNavbar({ absolute, light, isMini }) {
               />
             </SoftBox>
             <SoftBox color={light ? "white" : "inherit"}>
-              <Link to="/authentication/sign-in">
-                <IconButton sx={navbarIconButton} size="small">
+              {isAuthenticated ? (
+                <IconButton sx={navbarIconButton} size="small" onClick={logout}>
                   <Icon
                     sx={({ palette: { dark, white } }) => ({
                       color: light ? white.main : dark.main,
                     })}
                   >
-                    account_circle
+                    logout
                   </Icon>
                   <SoftTypography
                     variant="button"
                     fontWeight="medium"
                     color={light ? "white" : "dark"}
                   >
-                    Sign in
+                    Log out
                   </SoftTypography>
                 </IconButton>
-              </Link>
+              ) : (
+                <Link to="/authentication/sign-in">
+                  <IconButton sx={navbarIconButton} size="small">
+                    <Icon
+                      sx={({ palette: { dark, white } }) => ({
+                        color: light ? white.main : dark.main,
+                      })}
+                    >
+                      account_circle
+                    </Icon>
+                    <SoftTypography
+                      variant="button"
+                      fontWeight="medium"
+                      color={light ? "white" : "dark"}
+                    >
+                      Sign in
+                    </SoftTypography>
+                  </IconButton>
+                </Link>
+              )}
               <IconButton
                 size="small"
                 color="inherit"

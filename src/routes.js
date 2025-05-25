@@ -44,6 +44,7 @@ import RTL from "layouts/rtl";
 import Profile from "layouts/profile";
 import SignIn from "layouts/authentication/sign-in";
 import SignUp from "layouts/authentication/sign-up";
+import Login from "layouts/auth/login";
 
 // Soft UI Dashboard React icons
 import Shop from "examples/Icons/Shop";
@@ -63,6 +64,7 @@ const routes = [
     route: "/dashboard",
     icon: <Shop size="12px" />,
     component: <Dashboard />,
+    protected: true,
     noCollapse: true,
   },
   {
@@ -72,6 +74,7 @@ const routes = [
     route: "/tables",
     icon: <Office size="12px" />,
     component: <Tables />,
+    protected: true,
     noCollapse: true,
   },
   {
@@ -81,6 +84,7 @@ const routes = [
     route: "/billing",
     icon: <CreditCard size="12px" />,
     component: <Billing />,
+    protected: true,
     noCollapse: true,
   },
   {
@@ -90,6 +94,7 @@ const routes = [
     route: "/virtual-reality",
     icon: <Cube size="12px" />,
     component: <VirtualReality />,
+    protected: true,
     noCollapse: true,
   },
   {
@@ -99,6 +104,7 @@ const routes = [
     route: "/rtl",
     icon: <Settings size="12px" />,
     component: <RTL />,
+    protected: true,
     noCollapse: true,
   },
   { type: "title", title: "Account Pages", key: "account-pages" },
@@ -109,6 +115,7 @@ const routes = [
     route: "/profile",
     icon: <CustomerSupport size="12px" />,
     component: <Profile />,
+    protected: true,
     noCollapse: true,
   },
   {
@@ -128,6 +135,14 @@ const routes = [
     icon: <SpaceShip size="12px" />,
     component: <SignUp />,
     noCollapse: true,
+  },
+  {
+    type: "route",
+    name: "Login",
+    key: "login",
+    route: "/auth/login",
+    component: <Login />,
+    protected: false,
   },
 ];
 
