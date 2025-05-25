@@ -84,6 +84,11 @@ const colors = {
     focus: "#344767",
   },
 
+  freyraGreen: {
+    main: "#2BC48A",
+    focus: "#66A182",
+  },
+
   grey: {
     100: "#f8f9fa",
     200: "#e9ecef",

@@ -44,6 +44,7 @@ import RTL from "layouts/rtl";
 import Profile from "layouts/profile";
 import SignIn from "layouts/authentication/sign-in";
 import SignUp from "layouts/authentication/sign-up";
+import NatureCredits from "layouts/nature-credits";
 
 // Soft UI Dashboard React icons
 import Shop from "examples/Icons/Shop";
@@ -54,6 +55,7 @@ import SpaceShip from "examples/Icons/SpaceShip";
 import CustomerSupport from "examples/Icons/CustomerSupport";
 import CreditCard from "examples/Icons/CreditCard";
 import Cube from "examples/Icons/Cube";
+import Icon from "@mui/material/Icon";
 
 const routes = [
   {
@@ -63,6 +65,15 @@ const routes = [
     route: "/dashboard",
     icon: <Shop size="12px" />,
     component: <Dashboard />,
+    noCollapse: true,
+  },
+  {
+    type: "collapse",
+    name: "Nature Credits",
+    key: "nature-credits",
+    route: "/nature-credits",
+    icon: <Icon fontSize="small">eco</Icon>,
+    component: <NatureCredits />,
     noCollapse: true,
   },
   {
