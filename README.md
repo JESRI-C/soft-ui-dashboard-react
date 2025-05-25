@@ -86,6 +86,22 @@ Quick start options:
 :rocket: You can deploy your own version of the template to Genezio with one click:
 
 [![Deploy to Genezio](https://raw.githubusercontent.com/Genez-io/graphics/main/svg/deploy-button.svg)](https://app.genez.io/start/deploy?repository=https://github.com/creativetimofficial/soft-ui-dashboard-react&utm_source=github&utm_medium=referral&utm_campaign=github-creativetim&utm_term=deploy-project&utm_content=button-head)
+### Deploy to Netlify
+
+To deploy this project on [Netlify](https://www.netlify.com/):
+
+1. Create a new site from Git and select your repository.
+2. Set **Build command** to `npm run build`.
+3. Set **Publish directory** to `build`.
+
+You can keep these settings in a `netlify.toml` file at the project root:
+
+```toml
+[build]
+  command = "npm run build"
+  publish = "build"
+```
+
 
 ## Terminal Commands
 
