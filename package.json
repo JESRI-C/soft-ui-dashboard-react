@@ -5,12 +5,16 @@
   "author": "Creative Tim",
   "license": "SEE LICENSE IN <https://www.creative-tim.com/license>",
   "description": "ReactJS version of Soft UI Dashboard by Creative Tim",
+  "private": true,
   "bugs": {
     "url": "https://github.com/creativetimofficial/soft-ui-dashboard-react/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/creativetimofficial/soft-ui-dashboard-react.git"
+  },
+  "engines": {
+    "node": "18.x"
   },
   "dependencies": {
     "@emotion/cache": "11.11.0",

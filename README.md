@@ -91,14 +91,14 @@ Quick start options:
 To deploy this project on [Netlify](https://www.netlify.com/):
 
 1. Create a new site from Git and select your repository.
-2. Set **Build command** to `npm run install:peer-deps && npm run build`.
+2. Set **Build command** to `npm install --legacy-peer-deps && npm run build`.
 3. Set **Publish directory** to `build`.
 
 You can keep these settings in a `netlify.toml` file at the project root:
 
 ```toml
 [build]
-  command = "npm run install:peer-deps && npm run build"
+  command = "npm install --legacy-peer-deps && npm run build"
   publish = "build"
 ```
 
