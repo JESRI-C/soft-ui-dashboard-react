@@ -56,8 +56,7 @@ function SoftAlert({ color, dismissible, children, ...rest }) {
       setTimeout(() => setAlertStatus("unmount"), 400);
       return alertTemplate(false);
     default:
-      alertTemplate();
-      break;
+      return alertTemplate();
   }
 
   return null;

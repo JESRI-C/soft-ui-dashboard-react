@@ -77,7 +77,7 @@ export default styled(Button)(({ theme, ownerState }) => {
   };
 
   // styles for the button with variant="outlined"
-  const outliedStyles = () => {
+  const outlinedStyles = () => {
     // background color value
     const backgroundValue = color === "white" ? rgba(white.main, 0.1) : transparent.main;
 
@@ -221,7 +221,7 @@ export default styled(Button)(({ theme, ownerState }) => {
 
   return {
     ...(variant === "contained" && containedStyles()),
-    ...(variant === "outlined" && outliedStyles()),
+    ...(variant === "outlined" && outlinedStyles()),
     ...(variant === "gradient" && gradientStyles()),
     ...(variant === "text" && textStyles()),
     ...(circular && circularStyles()),
