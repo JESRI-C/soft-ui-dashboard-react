@@ -1,4 +1,5 @@
 {
+  "_comment": "This project uses Create React App (CRA). react-scripts is required for the test command. See README for details.",
   "name": "soft-ui-dashboard-react",
   "version": "4.0.1",
   "author": "Creative Tim",
